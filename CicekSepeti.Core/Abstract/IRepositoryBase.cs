@@ -2,24 +2,25 @@
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
+using System.Threading.Tasks;
 
 namespace CicekSepeti.Core.Abstract
 {
-    public interface IRepositoryBase<T> where T: class,IEntity
+    public interface IRepositoryBase<T> where T : class, IEntity, new()
     {
         /// <summary>
         /// yeni bir nesne ekleme
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
-        T Add(T entity);
+        Task<T> Add(T entity);
 
         /// <summary>
         /// varolan bir nesneyi güncelleme
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
-        T Update(T entity);
+        Task<T> Update(T entity);
 
         /// <summary>
         /// varolan bir nesneyi silme
@@ -32,13 +33,13 @@ namespace CicekSepeti.Core.Abstract
         /// </summary>
         /// <param name="filter"></param>
         /// <returns></returns>
-        T Get(Expression<Func<T, bool>> filter = null);
+        Task<T> Get(Expression<Func<T, bool>> filter = null);
 
         /// <summary>
         /// bir nesne listesi getirme
         /// </summary>
         /// <param name="filter"></param>
         /// <returns></returns>
-        IEnumerable<T> GetList(Expression<Func<T,bool>> filter = null);
+        Task<List<T>> GetList(Expression<Func<T, bool>> filter = null);
     }
 }

@@ -1,37 +1,49 @@
 ﻿using CicekSepeti.Core.Abstract;
 using CicekSepeti.Core.Entity;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
+using System.Threading.Tasks;
 
 namespace CicekSepeti.Core.Concrate.ORM
 {
-    public class EfReposityoryBase<T> : IRepositoryBase<T> where T : class, IEntity
+    public class EfReposityoryBase<T> : IRepositoryBase<T> where T : class, IEntity, new()
     {
-        public T Add(T entity)
+        public DbContext dbContext { get; set; }
+
+        public async Task<T> Add(T entity)
         {
-            throw new NotImplementedException();
+            var addEntity = dbContext.Entry(entity);
+            addEntity.State = EntityState.Added;
+            await dbContext.SaveChangesAsync();
+            return entity;
         }
 
-        public void Delete(T entity)
+        public async void Delete(T entity)
         {
-            throw new NotImplementedException();
+            var addEntity = dbContext.Entry(entity);
+            addEntity.State = EntityState.Deleted;
+            await dbContext.SaveChangesAsync();
         }
 
-        public T Get(Expression<Func<T, bool>> filter = null)
+        public Task<T> Get(Expression<Func<T, bool>> filter = null)
         {
-            throw new NotImplementedException();
+            return filter == null ? dbContext.Set<T>().FirstOrDefaultAsync() : dbContext.Set<T>().Where(filter).FirstOrDefaultAsync();
         }
 
-        public IEnumerable<T> GetList(Expression<Func<T, bool>> filter = null)
+        public Task<List<T>> GetList(Expression<Func<T, bool>> filter = null)
         {
-            throw new NotImplementedException();
+            return filter == null ? dbContext.Set<T>().ToListAsync() : dbContext.Set<T>().Where(filter).ToListAsync();
         }
 
-        public T Update(T entity)
+        public async Task<T> Update(T entity)
         {
-            throw new NotImplementedException();
+            var addEntity = dbContext.Entry(entity);
+            addEntity.State = EntityState.Modified;
+            await dbContext.SaveChangesAsync();
+            return entity;
         }
     }
 }
