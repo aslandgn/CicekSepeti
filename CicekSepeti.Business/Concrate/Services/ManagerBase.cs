@@ -12,7 +12,7 @@ namespace CicekSepeti.Business.Concrate.Services
     public abstract class ManagerBase<T, Type, TDal> : IServiceBase<T> where T : BaseEntity<Type>, IEntity, new() where TDal : IRepositoryBase<T> where Type : IComparable
     {
         protected internal TDal _manager;
-        public async Task<T> AddAsync(T entity)
+        public async Task<T> Add(T entity)
         {
             return await _manager.Add(entity);
         }

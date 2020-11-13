@@ -31,9 +31,9 @@ namespace CicekSepeti.WebUi
             {
                 configuration.RootPath = "ClientApp/dist";
             });
-            services.AddDbContext<CicekSepetiDbContext>(option => option.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             BusinessServiceInjections.Initialize(services);
             BusinessHelperInjections.Initialize(services);
+            services.AddDbContext<CicekSepetiDbContext>(option => option.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")), ServiceLifetime.Transient);
 
             // Auto Mapper Configurations
             var mappingConfig = new MapperConfiguration(cfg =>

@@ -12,7 +12,7 @@ namespace CicekSepeti.Business.Abstract.Helpers.HelperProduct
 
         Task<CategoryDto> UpdateDelete(CategoryDto categoryDto);
 
-        Task Delete(CategoryDto categoryDto);
+        Task Delete(long categoryDto);
 
         Task<IEnumerable<CategoryDto>> GetActives();
 

@@ -14,8 +14,8 @@ namespace CicekSepeti.Business.Injections
         {
             DataAccessInjections.Initialize(services);
 
-            services.AddSingleton<ICategoryService, CategoryManager>();
-            services.AddSingleton<IProductService, ProdcutManager>();
+            services.AddTransient<ICategoryService, CategoryManager>();
+            services.AddTransient<IProductService, ProdcutManager>();
         }
 
     }

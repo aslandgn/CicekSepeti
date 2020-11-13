@@ -11,8 +11,8 @@ namespace CicekSepeti.DataAccess.Injections
     {
         public static void Initialize(IServiceCollection services)
         {
-            services.AddSingleton<ICategoryDal, CategoryEfDal>();
-            services.AddSingleton<IProductDal, ProductEfDal>();
+            services.AddTransient<ICategoryDal, CategoryEfDal>();
+            services.AddTransient<IProductDal, ProductEfDal>();
         }
 
     }

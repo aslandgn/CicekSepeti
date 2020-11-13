@@ -36,27 +36,62 @@ namespace CicekSepeti.WebUi.Controllers.ControllerProduct
 
         // GET: api/Category/5
         [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
+        public async Task<CategoryDto> Get(long id)
         {
-            return "value";
+            try
+            {
+                return await _categoryHelper.GetOne(id);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         // POST: api/Category
         [HttpPost]
-        public void Post([FromBody] string value)
+        public async Task<CategoryDto> Post([FromBody] CategoryDto categoryDto)
         {
+            try
+            {
+                return await _categoryHelper.Add(categoryDto);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         // PUT: api/Category/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public async Task<CategoryDto> Put([FromBody]CategoryDto categoryDto)
         {
+            try
+            {
+                return await _categoryHelper.Update(categoryDto);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         // DELETE: api/ApiWithActions/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async void Delete(long id)
         {
+            try
+            {
+                await _categoryHelper.Delete(id);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
     }
 }

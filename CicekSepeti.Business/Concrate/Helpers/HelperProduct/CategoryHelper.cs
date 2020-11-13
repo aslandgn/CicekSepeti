@@ -27,7 +27,7 @@ namespace CicekSepeti.Business.Concrate.Helpers.HelperProduct
             try
             {
                 var entity = _mapper.Map<CategoryDto, Categories>(categoryDto);
-                var result = await _categoryService.AddAsync(entity);
+                var result = await _categoryService.Add(entity);
                 if (result == null)
                 {
                     throw new Exception("can not add the item.");
@@ -81,11 +81,11 @@ namespace CicekSepeti.Business.Concrate.Helpers.HelperProduct
             }
         }
 
-        public async Task Delete(CategoryDto categoryDto)
+        public async Task Delete(long id)
         {
             try
             {
-                var entity = await _categoryService.Get(x => x.Id == categoryDto.id);
+                var entity = await _categoryService.Get(x => x.Id == id);
                 if (entity == null)
                 {
                     throw new Exception("can not find the element to delete");

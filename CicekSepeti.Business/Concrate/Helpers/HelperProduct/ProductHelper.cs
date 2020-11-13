@@ -26,7 +26,7 @@ namespace CicekSepeti.Business.Concrate.Helpers.HelperProduct
             try
             {
                 var entity = _mapper.Map<ProductDto, Products>(productDto);
-                var result = await _productService.AddAsync(entity);
+                var result = await _productService.Add(entity);
                 if (result == null)
                 {
                     throw new Exception("can not add the item.");

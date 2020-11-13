@@ -11,8 +11,8 @@ namespace CicekSepeti.Business.Injections
     {
         public static void Initialize(IServiceCollection services)
         {
-            services.AddSingleton<ICategoryHelper, CategoryHelper>();
-            services.AddSingleton<IProductHelper, ProductHelper>();
+            services.AddTransient<ICategoryHelper, CategoryHelper>();
+            services.AddTransient<IProductHelper, ProductHelper>();
         }
 
     }

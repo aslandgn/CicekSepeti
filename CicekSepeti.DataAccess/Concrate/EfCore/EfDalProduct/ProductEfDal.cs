@@ -6,5 +6,9 @@ namespace CicekSepeti.DataAccess.Concrate.EfCore.EfDalProduct
 {
     public class ProductEfDal: EfReposityoryBase<Products>, IProductDal
     {
+        public ProductEfDal(CicekSepetiDbContext cicekSepetiDbContext)
+        {
+            dbContext = cicekSepetiDbContext;
+        }
     }
 }
