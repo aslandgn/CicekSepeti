@@ -11,10 +11,13 @@ namespace CicekSepeti.DataAccess.Concrate.EntityBuilder.BuilderProduct
             modelBuilder.Entity<Categories>()
                 .HasMany(x => x.ChildCategories)
                 .WithOne(x => x.RootCategory)
+                .HasForeignKey(x => x.Root_Category_Id)
                 ;
+
             modelBuilder.Entity<Categories>()
                 .HasMany(x => x.Products)
                 .WithOne(x => x.Category)
+                .HasForeignKey(x => x.Category_Id)
                 .IsRequired()
                 ;
         }

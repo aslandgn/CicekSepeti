@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using CicekSepeti.DataAccess.Abstract.DalProduct;
+using CicekSepeti.DataAccess.Concrate.EfCore.EfDalProduct;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace CicekSepeti.DataAccess.Injections
 {
@@ -9,6 +11,8 @@ namespace CicekSepeti.DataAccess.Injections
     {
         public static void Initialize(IServiceCollection services)
         {
+            services.AddSingleton<ICategoryDal, CategoryEfDal>();
+            services.AddSingleton<IProductDal, ProductEfDal>();
         }
 
     }

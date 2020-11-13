@@ -33,7 +33,7 @@ namespace CicekSepeti.Core.Abstract
         /// </summary>
         /// <param name="filter"></param>
         /// <returns></returns>
-        Task<T> Get(Expression<Func<T, bool>> filter = null);
+        Task<T> Get(Expression<Func<T, bool>> filter);
 
         /// <summary>
         /// bir nesne listesi getirme

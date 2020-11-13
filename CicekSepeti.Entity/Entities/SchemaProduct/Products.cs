@@ -1,16 +1,19 @@
-﻿namespace CicekSepeti.Entity.Entities.SchemaProduct
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace CicekSepeti.Entity.Entities.SchemaProduct
 {
+    [Table("Products", Schema = "PRODUCT")]
     public class Products: BaseEntity<long>
     {
-        public string NAME { get; set; }
+        public string Name { get; set; }
 
-        public int ORDER { get; set; }
+        public int Order { get; set; }
 
-        public string PRODUCT_CODE { get; set; }
+        public string Product_Code { get; set; }
 
-        public decimal PRICE { get; set; }
+        public decimal Price { get; set; }
 
-        public long CATEGORY_ID { get; set; }
+        public long Category_Id { get; set; }
 
         public Categories Category { get; set; }
     }

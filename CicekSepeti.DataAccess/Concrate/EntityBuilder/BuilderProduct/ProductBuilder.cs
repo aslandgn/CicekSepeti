@@ -7,7 +7,6 @@ namespace CicekSepeti.DataAccess.Concrate.EntityBuilder.BuilderProduct
     {
         internal static void Build(ModelBuilder modelBuilder)
         {
-            throw new NotImplementedException();
         }
     }
 }

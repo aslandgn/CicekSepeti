@@ -28,9 +28,9 @@ namespace CicekSepeti.Core.Concrate.ORM
             await dbContext.SaveChangesAsync();
         }
 
-        public Task<T> Get(Expression<Func<T, bool>> filter = null)
+        public Task<T> Get(Expression<Func<T, bool>> filter)
         {
-            return filter == null ? dbContext.Set<T>().FirstOrDefaultAsync() : dbContext.Set<T>().Where(filter).FirstOrDefaultAsync();
+            return dbContext.Set<T>().Where(filter).FirstOrDefaultAsync();
         }
 
         public Task<List<T>> GetList(Expression<Func<T, bool>> filter = null)

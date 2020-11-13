@@ -5,10 +5,10 @@ namespace CicekSepeti.Entity.Entities
 {
     public abstract class BaseEntity<Type>:IEntity where Type: IComparable
     {
-        public Type ID { get; set; }
+        public Type Id { get; set; }
 
-        public bool STATUS { get; set; }
+        public bool Status { get; set; }
 
-        public bool IS_DELETED { get; set; }
+        public bool Is_Deleted { get; set; }
     }
 }

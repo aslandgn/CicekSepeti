@@ -1,4 +1,8 @@
+using AutoMapper;
+using CicekSepeti.Business.Concrate.Helpers;
+using CicekSepeti.Business.Injections;
 using CicekSepeti.DataAccess.Concrate;
+using CicekSepeti.DataAccess.Injections;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
@@ -28,11 +32,22 @@ namespace CicekSepeti.WebUi
                 configuration.RootPath = "ClientApp/dist";
             });
             services.AddDbContext<CicekSepetiDbContext>(option => option.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            BusinessServiceInjections.Initialize(services);
+            BusinessHelperInjections.Initialize(services);
+
+            // Auto Mapper Configurations
+            var mappingConfig = new MapperConfiguration(cfg =>
+            {
+                cfg.AddProfile(new MvcAutoMapperConfigHelper(cfg));
+            });
+
+            IMapper mapper = mappingConfig.CreateMapper();
+            services.AddSingleton(mapper);
 
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, CicekSepetiDbContext cicekSepetiDb)
         {
             if (env.IsDevelopment())
             {
@@ -42,6 +57,7 @@ namespace CicekSepeti.WebUi
             {
                 app.UseExceptionHandler("/Error");
             }
+            cicekSepetiDb.Database.EnsureCreated();
 
             app.UseStaticFiles();
             if (!env.IsDevelopment())
