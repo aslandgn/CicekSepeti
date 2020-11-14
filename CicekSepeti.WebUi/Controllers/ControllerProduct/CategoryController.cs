@@ -51,7 +51,7 @@ namespace CicekSepeti.WebUi.Controllers.ControllerProduct
 
         // POST: api/Category
         [HttpPost]
-        public async Task<CategoryDto> Post([FromBody] CategoryDto categoryDto)
+        public async Task<CategoryDto> Post(CategoryDto categoryDto)
         {
             try
             {
@@ -66,7 +66,7 @@ namespace CicekSepeti.WebUi.Controllers.ControllerProduct
 
         // PUT: api/Category/5
         [HttpPut("{id}")]
-        public async Task<CategoryDto> Put([FromBody]CategoryDto categoryDto)
+        public async Task<CategoryDto> Put(long id,[FromBody]CategoryDto categoryDto)
         {
             try
             {

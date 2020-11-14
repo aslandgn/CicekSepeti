@@ -4,6 +4,6 @@
     {
         public long id { get; set; }
         public string categoryName { get; set; }
-        public string status { get; set; }
+        public bool status { get; set; }
     }
 }

@@ -2,7 +2,6 @@ using AutoMapper;
 using CicekSepeti.Business.Concrate.Helpers;
 using CicekSepeti.Business.Injections;
 using CicekSepeti.DataAccess.Concrate;
-using CicekSepeti.DataAccess.Injections;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
@@ -25,7 +24,7 @@ namespace CicekSepeti.WebUi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews();
+            services.AddControllersWithViews().AddNewtonsoftJson();
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {

@@ -1,16 +1,52 @@
 /* You can add global styles to this file, and also import other style files */
 
+
 /* Provide sufficient contrast against white background */
+
 a {
-  color: #0366d6;
+    color: #0366d6;
 }
 
 code {
-  color: #e01a76;
+    color: #e01a76;
 }
 
 .btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.close-button {
+    float: right;
+    top: -24px;
+    right: -24px;
+}
+
+.close-icon {
+    transition: 1s ease-in-out;
+}
+
+.close-icon:hover {
+    transform: rotate(180deg);
+}
+
+ ::ng-deep .icon-outside .close-button {
+    float: right;
+    top: -52px;
+    right: -52px;
+}
+
+ ::ng-deep .icon-outside .mat-dialog-container {
+    overflow: unset
 }
