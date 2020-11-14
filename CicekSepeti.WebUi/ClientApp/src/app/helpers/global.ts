@@ -4,6 +4,7 @@ export class Globals {
   url: string;
   private domLayout;
   private gridApi;
+  public onEdit: boolean = false;
 
   constructor(@Inject('BASE_URL') baseUrl2: string) {
     this.domLayout = 'autoHeight';
@@ -13,6 +14,9 @@ export class Globals {
     else {
       this.url = baseUrl2 + 'api/';
     }
+  }
+  onRowSelected(params) {
+      this.onEdit = params.node.selected;
   }
 
   onGridReady(params) {
