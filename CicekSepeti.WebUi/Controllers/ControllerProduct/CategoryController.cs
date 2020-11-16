@@ -66,10 +66,14 @@ namespace CicekSepeti.WebUi.Controllers.ControllerProduct
 
         // PUT: api/Category/5
         [HttpPut("{id}")]
-        public async Task<CategoryDto> Put(long id,[FromBody]CategoryDto categoryDto)
+        public async Task<CategoryDto> Put(long id ,[FromBody]CategoryDto categoryDto)
         {
             try
             {
+                if (id == 0)
+                {
+                    throw new Exception("id can not be 0");
+                }
                 return await _categoryHelper.Update(categoryDto);
             }
             catch (Exception)
@@ -81,11 +85,11 @@ namespace CicekSepeti.WebUi.Controllers.ControllerProduct
 
         // DELETE: api/ApiWithActions/5
         [HttpDelete("{id}")]
-        public async void Delete(long id)
+        public Task Delete(long id)
         {
             try
             {
-                await _categoryHelper.Delete(id);
+                 return _categoryHelper.Delete(id);
             }
             catch (Exception)
             {

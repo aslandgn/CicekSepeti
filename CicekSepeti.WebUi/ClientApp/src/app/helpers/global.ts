@@ -4,6 +4,7 @@ export class Globals {
   url: string;
   private domLayout;
   private gridApi;
+  private rowIndex;
   public onEdit: boolean = false;
 
   constructor(@Inject('BASE_URL') baseUrl2: string) {
@@ -16,7 +17,13 @@ export class Globals {
     }
   }
   onRowSelected(params) {
-      this.onEdit = params.node.selected;
+    debugger;
+    if (params.rowIndex == this.rowIndex && params.node.selected == true){
+      console.log(1);
+      this.rowIndex = params.rowIndex;
+      return;  
+    }
+    this.onEdit = params.node.selected;
   }
 
   onGridReady(params) {

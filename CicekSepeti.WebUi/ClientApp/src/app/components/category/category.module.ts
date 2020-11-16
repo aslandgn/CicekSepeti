@@ -5,12 +5,14 @@ import { MatDialogModule, MatInputModule, MatButtonModule, MatToolbarModule, Mat
 import { BrowserModule } from '@angular/platform-browser';
 import { AgGridModule } from 'ag-grid-angular';
 import { CategoryComponent } from './category.component';
+import { CategoryDeleteComponent } from './editorFiles/category-delete.component';
 import { CategoryEditComponent } from './editorFiles/category-edit.component';
 
 @NgModule({
     declarations: [
         CategoryComponent,
-        CategoryEditComponent
+        CategoryEditComponent,
+        CategoryDeleteComponent,
     ],
 
     imports: [
@@ -31,7 +33,10 @@ import { CategoryEditComponent } from './editorFiles/category-edit.component';
         { provide: MatDialogRef, useValue: {} },
         { provide: MAT_DIALOG_DATA, useValue: [] },
     ],
-    entryComponents: [CategoryEditComponent],
+    entryComponents: [
+        CategoryEditComponent,
+        CategoryDeleteComponent
+    ],
 
 })
 export class CategoryModule { }

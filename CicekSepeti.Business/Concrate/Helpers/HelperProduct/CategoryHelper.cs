@@ -85,7 +85,7 @@ namespace CicekSepeti.Business.Concrate.Helpers.HelperProduct
         {
             try
             {
-                var entity = await _categoryService.Get(x => x.Id == id);
+                var entity =  await _categoryService.Get(x => x.Id == id);
                 if (entity == null)
                 {
                     throw new Exception("can not find the element to delete");

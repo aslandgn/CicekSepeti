@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Globals } from 'src/app/helpers/global';
 import { ICategoryService } from 'src/app/services/abstract/serviceProduct/ICategoryService.service';
+import { CategoryDeleteComponent } from './editorFiles/category-delete.component';
 import { CategoryEditComponent } from './editorFiles/category-edit.component';
 
 @Component({
@@ -43,6 +44,7 @@ export class CategoryComponent implements OnInit {
         if (result.id == 0) {
           this.categoryService.add(result).subscribe(data => {
             this.getCategories();
+            this.global.onEdit = false;
           });
         }
         else {
@@ -50,6 +52,7 @@ export class CategoryComponent implements OnInit {
           this.categoryService.update(result.id, result).subscribe(data => {
             console.log(2)
             this.getCategories();
+            this.global.onEdit = false;
           });
         }
       }
@@ -59,9 +62,25 @@ export class CategoryComponent implements OnInit {
     this.category = this.global.getSelectedRowData()[0];
     this.openEditModal();
   }
+  
+  openDeleteModal(): void {
+    const dialogRef = this.dialog.open(CategoryDeleteComponent, {
+      data: this.category
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
+      if (result != false) {
+        this.categoryService.delete(this.category.id).subscribe(data => {
+          this.getCategories();
+          this.global.onEdit = false;
+        });
+      }
+    });
+  }
   deleteItem() {
     this.category = this.global.getSelectedRowData()[0];
-    this.openEditModal();
+    this.openDeleteModal();
   }
 }
 

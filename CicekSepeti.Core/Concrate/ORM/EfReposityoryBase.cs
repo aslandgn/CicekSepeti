@@ -21,16 +21,16 @@ namespace CicekSepeti.Core.Concrate.ORM
             return entity;
         }
 
-        public async void Delete(T entity)
+        public void Delete(T entity)
         {
             var addEntity = dbContext.Entry(entity);
             addEntity.State = EntityState.Deleted;
-            await dbContext.SaveChangesAsync();
+            dbContext.SaveChanges();
         }
 
         public Task<T> Get(Expression<Func<T, bool>> filter)
         {
-            return dbContext.Set<T>().Where(filter).FirstOrDefaultAsync();
+            return dbContext.Set<T>().Where(filter).SingleOrDefaultAsync();
         }
 
         public Task<List<T>> GetList(Expression<Func<T, bool>> filter = null)

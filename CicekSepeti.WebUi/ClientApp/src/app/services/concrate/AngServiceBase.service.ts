@@ -32,6 +32,6 @@ export abstract class AngManagerBase<T> extends IAngServiceBase<T> {
   }
 
   delete(id: number): Observable<any> {
-    return this._http.delete(this.url + '/delete/' + id);
+    return this._http.delete(this.url + '/' + id);
   }
 }
