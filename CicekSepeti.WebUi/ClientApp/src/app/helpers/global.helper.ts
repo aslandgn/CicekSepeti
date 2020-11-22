@@ -1,4 +1,5 @@
 import { Injectable, Inject, isDevMode } from '@angular/core';
+import { JwtHelperService } from '@auth0/angular-jwt';
 @Injectable()
 export class Globals {
   url: string;
@@ -7,7 +8,7 @@ export class Globals {
   private rowIndex;
   public onEdit: boolean = false;
 
-  constructor(@Inject('BASE_URL') baseUrl2: string) {
+  constructor(@Inject('BASE_URL') baseUrl2: string, private jwtHelper: JwtHelperService) {
     this.domLayout = 'autoHeight';
     if (isDevMode()) {
       this.url = "http://localhost:63177/api/"
@@ -18,10 +19,10 @@ export class Globals {
   }
   onRowSelected(params) {
     debugger;
-    if (params.rowIndex == this.rowIndex && params.node.selected == true){
+    if (params.rowIndex == this.rowIndex && params.node.selected == true) {
       console.log(1);
       this.rowIndex = params.rowIndex;
-      return;  
+      return;
     }
     this.onEdit = params.node.selected;
   }
@@ -39,5 +40,10 @@ export class Globals {
 
   statusRender(params) {
     return params.value ? 'active' : 'inactive'
+  }
+  hasValidToken() {
+    var token = localStorage.getItem("token");
+    return !this.jwtHelper.isTokenExpired(token);
+
   }
 }

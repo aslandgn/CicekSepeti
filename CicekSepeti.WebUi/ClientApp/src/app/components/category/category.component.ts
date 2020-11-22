@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Globals } from 'src/app/helpers/global';
+import { Globals } from 'src/app/helpers/global.helper';
 import { ICategoryService } from 'src/app/services/abstract/serviceProduct/ICategoryService.service';
 import { CategoryDeleteComponent } from './editorFiles/category-delete.component';
 import { CategoryEditComponent } from './editorFiles/category-edit.component';

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Globals } from 'src/app/helpers/global';
+import { Globals } from 'src/app/helpers/global.helper';
 import { IAngServiceBase } from '../Abstract/IAngServiceBase.service';
 
 @Injectable()

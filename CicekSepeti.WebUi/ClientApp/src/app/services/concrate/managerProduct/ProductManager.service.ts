@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { AngManagerBase } from '../AngServiceBase.service';
-import { Globals } from 'src/app/helpers/global';
+import { Globals } from 'src/app/helpers/global.helper';
 import { IProductService } from '../../abstract/serviceProduct/IProductService.service';
 
 

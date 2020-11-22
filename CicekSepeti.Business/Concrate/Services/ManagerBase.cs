@@ -1,6 +1,5 @@
 ﻿using CicekSepeti.Business.Abstract.Services;
 using CicekSepeti.Core.Abstract;
-using CicekSepeti.Core.Entity;
 using CicekSepeti.Entity.Entities;
 using System;
 using System.Collections.Generic;
@@ -9,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CicekSepeti.Business.Concrate.Services
 {
-    public abstract class ManagerBase<T, Type, TDal> : IServiceBase<T> where T : BaseEntity<Type>, IEntity, new() where TDal : IRepositoryBase<T> where Type : IComparable
+    public abstract class ManagerBase<T, Type, TDal> : IServiceBase<T> where T : BaseEntity<Type>, new() where TDal : IRepositoryBase<T> where Type : IComparable
     {
         protected internal TDal _manager;
         public async Task<T> Add(T entity)

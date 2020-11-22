@@ -4,14 +4,17 @@ import { HomeComponent } from './components/home/home.component';
 import { CategoryComponent } from './components/category/category.component';
 import { CommonModule } from '@angular/common';
 import { AppMainComponent } from './app.main.component';
+import { LoginComponent } from './components/login/login.component';
+import { AuthGuard } from './helpers/AuthGuard.helper';
 const routes: Routes = [
     {
-        path: '', component: AppMainComponent,
+        path: '', component: AppMainComponent, canActivate: [AuthGuard],
         children: [
-            { path: '', component: HomeComponent, pathMatch: 'full' },
-            { path: 'category', component: CategoryComponent },
+            { path: '', component: HomeComponent, pathMatch: 'full', canActivate: [AuthGuard] },
+            { path: 'category', component: CategoryComponent, canActivate: [AuthGuard] },
         ]
     },
+    { path: 'login', component: LoginComponent },
 ];
 @NgModule({
     imports: [

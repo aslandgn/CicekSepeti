@@ -32,6 +32,8 @@ namespace CicekSepeti.WebUi
             });
             BusinessServiceInjections.Initialize(services);
             BusinessHelperInjections.Initialize(services);
+            // configure strongly typed settings object
+            services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
             services.AddDbContext<CicekSepetiDbContext>(option => option.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")), ServiceLifetime.Transient);
 
             // Auto Mapper Configurations
@@ -56,7 +58,8 @@ namespace CicekSepeti.WebUi
             {
                 app.UseExceptionHandler("/Error");
             }
-            cicekSepetiDb.Database.EnsureCreated();
+            //cicekSepetiDb.Database.EnsureCreated();
+            cicekSepetiDb.Database.Migrate();
 
             app.UseStaticFiles();
             if (!env.IsDevelopment())

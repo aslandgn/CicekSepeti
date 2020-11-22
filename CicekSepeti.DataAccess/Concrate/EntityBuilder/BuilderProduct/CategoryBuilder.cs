@@ -1,6 +1,5 @@
 ﻿using CicekSepeti.Entity.Entities.SchemaProduct;
 using Microsoft.EntityFrameworkCore;
-using System;
 
 namespace CicekSepeti.DataAccess.Concrate.EntityBuilder.BuilderProduct
 {

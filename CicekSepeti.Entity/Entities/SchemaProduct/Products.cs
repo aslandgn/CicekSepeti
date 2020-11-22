@@ -1,9 +1,11 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using CicekSepeti.Entity.Entities.SchemaShopping;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CicekSepeti.Entity.Entities.SchemaProduct
 {
     [Table("Products", Schema = "PRODUCT")]
-    public class Products: BaseEntity<long>
+    public class Products : BaseEntity<long>
     {
         public string Name { get; set; }
 
@@ -13,8 +15,11 @@ namespace CicekSepeti.Entity.Entities.SchemaProduct
 
         public decimal Price { get; set; }
 
+        public int InStock { get; set; }
+
         public long Category_Id { get; set; }
 
         public Categories Category { get; set; }
+        public IEnumerable<ShoppingCartItems> ShoppingCartItems { get; set; }
     }
 }

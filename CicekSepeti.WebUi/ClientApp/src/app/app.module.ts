@@ -10,11 +10,18 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ComponentsModule } from './components/component.module';
 import { AppRouterModule } from './app.router.module';
 import { AppMainComponent } from './app.main.component';
+import { LoginComponent } from './components/login/login.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { JwtModule } from '@auth0/angular-jwt';
+export function tokenGetter() {
+  return localStorage.getItem("token");
+}
 @NgModule({
   declarations: [
     AppComponent,
     AppMainComponent,
     NavMenuComponent,
+    LoginComponent,
   ],
   exports:[
   ],
@@ -25,6 +32,13 @@ import { AppMainComponent } from './app.main.component';
     AppServiceModule,
     AppRouterModule,
     BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
+    JwtModule.forRoot({
+      config: {
+       tokenGetter: tokenGetter,
+      },
+    }),
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: HttpConfigInterceptor, multi: true },
