@@ -17,8 +17,8 @@ namespace CicekSepeti.WebUi.Controllers.ControllerUser
         {
             _userHelper = userHelper;
         }
-        
-        [HttpPost]
+
+        [HttpPost("login")]
         public async Task<UserModel> Login(UserModel model)
         {
             try

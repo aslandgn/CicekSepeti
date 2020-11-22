@@ -2,13 +2,18 @@ using AutoMapper;
 using CicekSepeti.Business.Concrate.Helpers;
 using CicekSepeti.Business.Injections;
 using CicekSepeti.DataAccess.Concrate;
+using CicekSepeti.WebUi.App_Helpers;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace CicekSepeti.WebUi
 {
@@ -32,8 +37,10 @@ namespace CicekSepeti.WebUi
             });
             BusinessServiceInjections.Initialize(services);
             BusinessHelperInjections.Initialize(services);
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             // configure strongly typed settings object
-            services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
+            var appSettingsSection = Configuration.GetSection("AppSettings");
+            services.Configure<AppSettings>(appSettingsSection);
             services.AddDbContext<CicekSepetiDbContext>(option => option.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")), ServiceLifetime.Transient);
 
             // Auto Mapper Configurations
@@ -44,6 +51,27 @@ namespace CicekSepeti.WebUi
 
             IMapper mapper = mappingConfig.CreateMapper();
             services.AddSingleton(mapper);
+            // configure jwt authentication
+
+            var appSettings = appSettingsSection.Get<AppSettings>();
+            var key = Encoding.ASCII.GetBytes(appSettings.Secret);
+            services.AddAuthentication(x =>
+            {
+                x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+            .AddJwtBearer(x =>
+            {
+                x.RequireHttpsMetadata = false;
+                x.SaveToken = true;
+                x.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(key),
+                    ValidateIssuer = false,
+                    ValidateAudience = false
+                };
+            });
 
         }
 
@@ -58,6 +86,7 @@ namespace CicekSepeti.WebUi
             {
                 app.UseExceptionHandler("/Error");
             }
+            app.UseMiddleware<TokenCheckMiddleware>();
             //cicekSepetiDb.Database.EnsureCreated();
             cicekSepetiDb.Database.Migrate();
 
@@ -75,7 +104,6 @@ namespace CicekSepeti.WebUi
                     name: "default",
                     pattern: "{controller}/{action=Index}/{id?}");
             });
-
             app.UseSpa(spa =>
             {
                 // To learn more about options for serving an Angular SPA from ASP.NET Core,

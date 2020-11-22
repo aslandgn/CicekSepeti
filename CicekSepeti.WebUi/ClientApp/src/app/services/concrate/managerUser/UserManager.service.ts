@@ -13,7 +13,7 @@ export class UserManager extends AngManagerBase<Users> implements IUserService {
     this._http = http;
   }
   login(model: Users) {
-    return this._http.post<Users>(this.url, model);
+    return this._http.post<Users>(this.url + "/login", model);
   }
 
 }

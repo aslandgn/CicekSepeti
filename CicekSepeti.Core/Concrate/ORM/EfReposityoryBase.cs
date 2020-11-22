@@ -1,6 +1,7 @@
 ﻿using CicekSepeti.Core.Abstract;
 using CicekSepeti.Core.Entity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Query;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -44,6 +45,16 @@ namespace CicekSepeti.Core.Concrate.ORM
             addEntity.State = EntityState.Modified;
             await dbContext.SaveChangesAsync();
             return entity;
+        }
+
+
+
+        public async Task<List<T>> GetList(Func<IQueryable<T>, IIncludableQueryable<T, object>> includes, Expression<Func<T, bool>> filter = null)
+        {
+
+            return await (filter == null ? includes(dbContext.Set<T>()).ToListAsync() : includes(dbContext.Set<T>()).Where(filter).ToListAsync());
+
+
         }
     }
 }

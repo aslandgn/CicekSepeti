@@ -6,5 +6,9 @@ namespace CicekSepeti.DataAccess.Concrate.EfCore.EfDalShopping
 {
     public class ShoppingCartEfDal: EfReposityoryBase<ShoppingCarts>, IShoppingCartDal
     {
+        public ShoppingCartEfDal(CicekSepetiDbContext cicekSepetiDbContext)
+        {
+            dbContext = cicekSepetiDbContext;
+        }
     }
 }

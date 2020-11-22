@@ -40,6 +40,8 @@ export class CategoryComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
+      debugger;
       if (result != undefined) {
         if (result.id == 0) {
           this.categoryService.add(result).subscribe(data => {
@@ -55,6 +57,8 @@ export class CategoryComponent implements OnInit {
             this.global.onEdit = false;
           });
         }
+        this.category = { id: 0, categoryName: null, rootCategoryId: null, rootCategoryName: null, status: true };
+  
       }
     });
   }

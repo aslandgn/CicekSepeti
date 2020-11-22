@@ -1,6 +1,8 @@
 ﻿using CicekSepeti.Core.Entity;
+using Microsoft.EntityFrameworkCore.Query;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
@@ -41,5 +43,8 @@ namespace CicekSepeti.Core.Abstract
         /// <param name="filter"></param>
         /// <returns></returns>
         Task<List<T>> GetList(Expression<Func<T, bool>> filter = null);
+
+
+        Task<List<T>> GetList(Func<IQueryable<T>, IIncludableQueryable<T, object>> includes, Expression<Func<T, bool>> filter = null);
     }
 }
