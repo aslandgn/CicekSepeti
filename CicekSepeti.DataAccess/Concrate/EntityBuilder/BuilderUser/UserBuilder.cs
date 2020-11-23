@@ -13,6 +13,26 @@ namespace CicekSepeti.DataAccess.Concrate.EntityBuilder.BuilderUser
                 .HasForeignKey(x => x.User_Id)
                 .IsRequired()
                 ;
+            modelBuilder.Entity<Users>().HasData(
+                new Users
+                {
+                    Id = 1,
+                    Name = "test1",
+                    SurName = "test1",
+                    Password = "test1",
+                    Status = true,
+                    Is_Deleted = false,
+                });
+            modelBuilder.Entity<Users>().HasData(
+                new Users
+                {
+                    Id = 2,
+                    Name = "test2",
+                    SurName = "test2",
+                    Password = "test2",
+                    Status = true,
+                    Is_Deleted = false,
+                });
         }
     }
 }
