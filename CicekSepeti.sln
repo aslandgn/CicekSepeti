@@ -3,17 +3,22 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CicekSepeti.WebUi", "CicekSepeti.WebUi\CicekSepeti.WebUi.csproj", "{5D9C0540-B040-42AC-9DDA-158FD3C64DC3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CicekSepeti.WebUi", "CicekSepeti.WebUi\CicekSepeti.WebUi.csproj", "{5D9C0540-B040-42AC-9DDA-158FD3C64DC3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CicekSepeti.Core", "CicekSepeti.Core\CicekSepeti.Core.csproj", "{4E122097-7FD1-454F-9A5D-98B05658A551}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CicekSepeti.Core", "CicekSepeti.Core\CicekSepeti.Core.csproj", "{4E122097-7FD1-454F-9A5D-98B05658A551}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CicekSepeti.DataAccess", "CicekSepeti.DataAccess\CicekSepeti.DataAccess.csproj", "{EBAE613B-D7FC-4438-8E58-587DA4E3BB13}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CicekSepeti.DataAccess", "CicekSepeti.DataAccess\CicekSepeti.DataAccess.csproj", "{EBAE613B-D7FC-4438-8E58-587DA4E3BB13}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CicekSepeti.Business", "CicekSepeti.Business\CicekSepeti.Business.csproj", "{8A70CB0E-E7D2-4FE5-825B-4BD02659B406}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CicekSepeti.Business", "CicekSepeti.Business\CicekSepeti.Business.csproj", "{8A70CB0E-E7D2-4FE5-825B-4BD02659B406}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CicekSepeti.Entity", "CicekSepeti.Entity\CicekSepeti.Entity.csproj", "{BA37EA7F-518F-46E5-B0EC-401EF8CB28B4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CicekSepeti.Entity", "CicekSepeti.Entity\CicekSepeti.Entity.csproj", "{BA37EA7F-518F-46E5-B0EC-401EF8CB28B4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CicekSepeti.Dto", "CicekSepeti.Dto\CicekSepeti.Dto.csproj", "{345E1871-28C6-49B0-8862-ECC83E98743A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CicekSepeti.Dto", "CicekSepeti.Dto\CicekSepeti.Dto.csproj", "{345E1871-28C6-49B0-8862-ECC83E98743A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{80A609E4-F931-4CF0-8640-F30B70BE5C76}"
+	ProjectSection(SolutionItems) = preProject
+		readme.md = readme.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
