@@ -58,7 +58,7 @@ namespace CicekSepeti.WebUi.Controllers.ControllerShopping
             }
         }
 
-        [HttpDelete]
+        [HttpDelete("{cartId}")]
         public async Task CleanCart(long cartId)
         {
             try
