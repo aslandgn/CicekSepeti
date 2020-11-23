@@ -16,9 +16,19 @@ namespace CicekSepeti.Business.Concrate.Services
             return await _manager.Add(entity);
         }
 
+        public async Task<List<T>> Add(List<T> entityList)
+        {
+            return await _manager.Add(entityList);
+        }
+
         public void Delete(T entity)
         {
             _manager.Delete(entity);
+        }
+
+        public void Delete(List<T> entityList)
+        {
+            _manager.Delete(entityList);
         }
 
         public async Task<T> Get(Expression<Func<T, bool>> filter)
@@ -34,6 +44,11 @@ namespace CicekSepeti.Business.Concrate.Services
         public async Task<T> Update(T entity)
         {
             return await _manager.Update(entity);
+        }
+
+        public async Task<List<T>> Update(List<T> entityList)
+        {
+            return await _manager.Update(entityList);
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using CicekSepeti.Business.Concrate.Helpers.AutoMapperConfigs.AutoMapperProduct;
+using CicekSepeti.Business.Concrate.Helpers.AutoMapperConfigs.AutoMapperShopping;
 using CicekSepeti.Business.Concrate.Helpers.AutoMapperConfigs.AutoMapperUser;
 
 namespace CicekSepeti.Business.Concrate.Helpers
@@ -14,6 +15,10 @@ namespace CicekSepeti.Business.Concrate.Helpers
             #endregion
             #region User
             UserMapper.getConfig(cfg);
+            #endregion
+            #region shopping
+            ShoppingCartMapper.getConfig(cfg);
+            ShoppingCartItemMapper.getConfig(cfg);
             #endregion
         }
     }

@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using CicekSepeti.Dto.WebUiDtos.DtoProduct;
 using CicekSepeti.Entity.Entities.SchemaProduct;
-using System;
 
 namespace CicekSepeti.Business.Concrate.Helpers.AutoMapperConfigs.AutoMapperProduct
 {

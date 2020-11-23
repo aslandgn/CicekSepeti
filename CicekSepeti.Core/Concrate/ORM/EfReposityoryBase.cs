@@ -22,10 +22,24 @@ namespace CicekSepeti.Core.Concrate.ORM
             return entity;
         }
 
+        public async Task<List<T>> Add(List<T> entityList)
+        {
+            var addEntity = dbContext.Entry(entityList);
+            addEntity.State = EntityState.Added;
+            await dbContext.SaveChangesAsync();
+            return entityList;
+        }
+
         public void Delete(T entity)
         {
             var addEntity = dbContext.Entry(entity);
             addEntity.State = EntityState.Deleted;
+            dbContext.SaveChanges();
+        }
+
+        public void Delete(List<T> entityList)
+        {
+            dbContext.Set<T>().RemoveRange(entityList);
             dbContext.SaveChanges();
         }
 
@@ -41,20 +55,21 @@ namespace CicekSepeti.Core.Concrate.ORM
 
         public async Task<T> Update(T entity)
         {
-            var addEntity = dbContext.Entry(entity);
-            addEntity.State = EntityState.Modified;
+            var updEntity = dbContext.Entry(entity);
+            updEntity.State = EntityState.Modified;
             await dbContext.SaveChangesAsync();
             return entity;
         }
-
-
+        public async Task<List<T>> Update(List<T> entityList)
+        {
+            dbContext.Set<T>().UpdateRange(entityList);
+            await dbContext.SaveChangesAsync();
+            return entityList;
+        }
 
         public async Task<List<T>> GetList(Func<IQueryable<T>, IIncludableQueryable<T, object>> includes, Expression<Func<T, bool>> filter = null)
         {
-
             return await (filter == null ? includes(dbContext.Set<T>()).ToListAsync() : includes(dbContext.Set<T>()).Where(filter).ToListAsync());
-
-
         }
     }
 }

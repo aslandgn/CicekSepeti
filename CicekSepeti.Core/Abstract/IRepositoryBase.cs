@@ -16,6 +16,7 @@ namespace CicekSepeti.Core.Abstract
         /// <param name="entity"></param>
         /// <returns></returns>
         Task<T> Add(T entity);
+        Task<List<T>> Add(List<T> entityList);
 
         /// <summary>
         /// varolan bir nesneyi güncelleme
@@ -23,12 +24,14 @@ namespace CicekSepeti.Core.Abstract
         /// <param name="entity"></param>
         /// <returns></returns>
         Task<T> Update(T entity);
+        Task<List<T>> Update(List<T> entityList);
 
         /// <summary>
         /// varolan bir nesneyi silme
         /// </summary>
         /// <param name="entity"></param>
         void Delete(T entity);
+        void Delete(List<T> entityList);
 
         /// <summary>
         /// bir nesneyi getirme

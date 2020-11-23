@@ -22,7 +22,7 @@ namespace CicekSepeti.Business.Concrate.Services.ManagerShopping
             Func<IQueryable<ShoppingCarts>, IIncludableQueryable<ShoppingCarts, object>> includes = source => source.
                  Include(x => x.ShoppingCartItems)
                  .ThenInclude(x => x.Product)
-                 .Include(x => x.User);
+                 ;
             return await _manager.GetList(includes, filter);
         }
     }

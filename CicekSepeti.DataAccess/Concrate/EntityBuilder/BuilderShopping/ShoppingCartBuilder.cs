@@ -13,6 +13,9 @@ namespace CicekSepeti.DataAccess.Concrate.EntityBuilder.BuilderShopping
                 .HasForeignKey(x => x.ShoppingCart_Id)
                 .IsRequired()
                 ;
+            modelBuilder.Entity<ShoppingCarts>()
+                .Property(x => x.Total)
+                .HasPrecision(18, 6);
         }
     }
 }

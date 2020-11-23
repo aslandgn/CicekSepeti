@@ -8,6 +8,7 @@ namespace CicekSepeti.Entity.Entities.SchemaShopping
     public class ShoppingCarts: BaseEntity<long>
     {
         public int User_Id { get; set; }
+        public decimal Total { get; set; }
 
         public virtual Users User { get; set; }
 
